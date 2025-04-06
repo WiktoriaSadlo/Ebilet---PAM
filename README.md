@@ -6,11 +6,6 @@ eBilet to aplikacja internetowa umożliwiająca zakup biletów na wydarzenia tak
 - [Opis projektu](#opis-projektu)
 - [Funkcjonalności](#funkcjonalności)
 - [Technologie](#technologie)
-- [Instalacja](#instalacja)
-- [Uruchomienie projektu](#uruchomienie-projektu)
-- [Struktura katalogów](#struktura-katalogów)
-- [Przykłady użycia](#przykłady-użycia)
-- [Licencja](#licencja)
 
 ## Opis projektu
 
