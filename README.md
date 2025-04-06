@@ -38,13 +38,4 @@ Projekt jest stworzony przy użyciu biblioteki **React**, z wykorzystaniem **Rea
 - **TailwindCSS**: Narzędzie do stylizacji aplikacji za pomocą utility-first CSS.
 - **React Context**: Używane do zarządzania stanem użytkownika (np. dane logowania, koszyk).
   
-## Instalacja
 
-Aby uruchomić aplikację lokalnie, należy wykonać kilka prostych kroków.
-
-### Krok 1: Sklonowanie repozytorium
-
-Skopiuj repozytorium na swoją lokalną maszynę:
-
-```bash
-git clone https://github.com/your-username/ebilet-app.git
