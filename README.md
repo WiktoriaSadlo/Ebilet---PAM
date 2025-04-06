@@ -1,12 +1,50 @@
-# React + Vite
+# eBilet - Aplikacja do zakupu biletów online
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+eBilet to aplikacja internetowa umożliwiająca zakup biletów na wydarzenia takie jak koncerty, festiwale, wystawy, oraz inne wydarzenia kulturalne i sportowe. Użytkownicy mogą łatwo przeglądać dostępne wydarzenia, wybierać bilety, a następnie je kupować.
 
-Currently, two official plugins are available:
+## Spis treści
+- [Opis projektu](#opis-projektu)
+- [Funkcjonalności](#funkcjonalności)
+- [Technologie](#technologie)
+- [Instalacja](#instalacja)
+- [Uruchomienie projektu](#uruchomienie-projektu)
+- [Struktura katalogów](#struktura-katalogów)
+- [Przykłady użycia](#przykłady-użycia)
+- [Licencja](#licencja)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Opis projektu
 
-## Expanding the ESLint configuration
+Aplikacja umożliwia użytkownikom:
+- Przeglądanie dostępnych wydarzeń.
+- Zakup biletów na wydarzenia.
+- Zarządzanie swoim koszykiem.
+- Rejestrację oraz logowanie użytkowników.
+- Wyświetlanie dostępnych miejsc na wydarzeniach w formie mapy (np. Tauron Arena Kraków, PGE Narodowe).
 
-If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Projekt jest stworzony przy użyciu biblioteki **React**, z wykorzystaniem **React Router** do nawigacji między stronami oraz **TailwindCSS** do stylizacji interfejsu.
+
+## Funkcjonalności
+
+- **Rejestracja użytkowników**: Możliwość założenia nowego konta oraz zalogowania się.
+- **Przeglądanie wydarzeń**: Użytkownicy mogą przeglądać dostępne wydarzenia z różnych kategorii.
+- **Zakup biletów**: Użytkownicy mogą wybierać liczbę biletów, dodawać je do koszyka i finalizować zakup.
+- **Zarządzanie koszykiem**: Możliwość dodania biletu do koszyka oraz jego edytowania.
+- **Mapy dostępnych miejsc**: Dla niektórych wydarzeń (np. Tauron Arena Kraków, PGE Narodowe) wyświetlana jest mapa dostępnych miejsc.
+  
+## Technologie
+
+- **React**: Biblioteka do tworzenia interfejsów użytkownika.
+- **React Router**: Narzędzie do zarządzania nawigacją w aplikacji.
+- **TailwindCSS**: Narzędzie do stylizacji aplikacji za pomocą utility-first CSS.
+- **React Context**: Używane do zarządzania stanem użytkownika (np. dane logowania, koszyk).
+  
+## Instalacja
+
+Aby uruchomić aplikację lokalnie, należy wykonać kilka prostych kroków.
+
+### Krok 1: Sklonowanie repozytorium
+
+Skopiuj repozytorium na swoją lokalną maszynę:
+
+```bash
+git clone https://github.com/your-username/ebilet-app.git
