@@ -1,0 +1,86 @@
+
+const events = [
+    {
+      id: 1,
+      title: "Metallica – WorldWired Tour",
+      genre: "Rock",
+      city: "Kraków",
+      venue: "TAURON Arena",
+      date: "2025-05-10",
+    },
+    {
+      id: 2,
+      title: "Jazz Night with Tomasz Stańko Tribute",
+      genre: "Jazz",
+      city: "Kraków",
+      venue: "ICE Kraków",
+      date: "2025-04-15",
+    },
+    {
+      id: 3,
+      title: "Classical Evening – Chopin & Friends",
+      genre: "Classical",
+      city: "Kraków",
+      venue: "ICE Kraków",
+      date: "2025-06-01",
+    },
+    {
+      id: 4,
+      title: "Dawid Podsiadło – Leśna Muzyka",
+      genre: "Pop",
+      city: "Kraków",
+      venue: "Klub Studio",
+      date: "2025-05-25",
+    },
+    {
+      id: 5,
+      title: "Quebonafide – Final Tour",
+      genre: "Hip-hop",
+      city: "Kraków",
+      venue: "Klub Studio",
+      date: "2025-07-02",
+    },
+    {
+      id: 6,
+      title: "Ralph Kaminski – Bal u Rafała",
+      genre: "Alternative",
+      city: "Kraków",
+      venue: "Klub Studio",
+      date: "2025-06-10",
+    },
+    {
+      id: 7,
+      title: "Taylor Swift – The Eras Tour",
+      genre: "Pop",
+      city: "Warszawa",
+      venue: "Stadion Narodowy",
+      date: "2025-08-20",
+    },
+    {
+      id: 8,
+      title: "Mrozu – Złote Bloki",
+      genre: "Soul/Pop",
+      city: "Warszawa",
+      venue: "Klub Progresja",
+      date: "2025-04-22",
+    },
+    {
+      id: 9,
+      title: "Sanah – Bankiet",
+      genre: "Pop",
+      city: "Warszawa",
+      venue: "Klub Progresja",
+      date: "2025-06-15",
+    },
+    {
+      id: 10,
+      title: "Behemoth – Black Mass Tour",
+      genre: "Metal",
+      city: "Warszawa",
+      venue: "Klub Progresja",
+      date: "2025-07-11",
+    },
+  ];
+  
+  export default events;
+  
