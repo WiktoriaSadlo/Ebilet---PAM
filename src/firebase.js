@@ -1,9 +1,8 @@
 // src/firebase.js
 import { initializeApp } from "firebase/app";
-import { getAuth, onAuthStateChanged } from "firebase/auth";
+import { getAuth } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
-import { getMessaging } from "firebase/messaging";
-import { getAnalytics } from "firebase/analytics";
+
 
 const firebaseConfig = {
     apiKey: "AIzaSyDCxHkh1LegHe-KJQabJvcnwMjLM7B1yM8",
@@ -18,7 +17,6 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
-const messaging = getMessaging(app);
-const analytics = getAnalytics(app);
 
-export { auth, db, messaging };
+
+export { auth, db };

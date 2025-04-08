@@ -10,7 +10,7 @@ import Login from "./components/Login";
 import Register from "./components/Register";
 import Home from "./components/Home"; 
 import EventsPage from "./components/EventsPage";
-import TicketPurchasePage from './components/TicketPurchasePage';
+
 
 
 function App() {
@@ -45,8 +45,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/events" element={<EventsPage />} />
-          <Route path="/events" element={<EventsPage />} />
-          <Route path="/ticket/:eventId" element={<TicketPurchasePage />} />
+          
           <Route path="/tickets" element={user ? <div>Twoje bilety</div> : <Navigate to="/login" />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />

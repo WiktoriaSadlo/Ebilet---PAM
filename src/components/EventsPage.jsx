@@ -1,17 +1,31 @@
-import { useState } from "react";
-import events from "../data/events";
+import { useEffect, useState } from "react";
+import { collection, getDocs } from "firebase/firestore";
+import { db } from "../firebase";
 import Card, { CardContent } from "./ui/card";
 import Input from "./ui/input";
 import Button from "./ui/button";
-import { Link } from 'react-router-dom';
-
-const uniqueGenres = ["Wszystkie", ...new Set(events.map(e => e.genre))];
-const uniqueCities = ["Wszystkie", ...new Set(events.map(e => e.city))];
+import CustomDialog from "./ui/dialog";
 
 export default function EventsPage() {
+  const [events, setEvents] = useState([]);
   const [selectedCity, setSelectedCity] = useState("Wszystkie");
   const [selectedGenre, setSelectedGenre] = useState("Wszystkie");
   const [search, setSearch] = useState("");
+  const [open, setOpen] = useState(false);
+  const [selectedEvent, setSelectedEvent] = useState(null); // 👈 nowy stan
+
+  useEffect(() => {
+    const fetchEvents = async () => {
+      const querySnapshot = await getDocs(collection(db, "events"));
+      const eventsData = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+      setEvents(eventsData);
+    };
+
+    fetchEvents();
+  }, []);
+
+  const uniqueGenres = ["Wszystkie", ...new Set(events.map(e => e.genre))];
+  const uniqueCities = ["Wszystkie", ...new Set(events.map(e => e.city))];
 
   const filteredEvents = events.filter(event => {
     const matchCity = selectedCity === "Wszystkie" || event.city === selectedCity;
@@ -59,14 +73,33 @@ export default function EventsPage() {
                 <p className="text-sm text-gray-600">{event.city}, {event.venue}</p>
                 <p className="text-sm">🎵 {event.genre}</p>
                 <p className="text-sm">📅 {event.date}</p>
-                <Link to={{ pathname: `/ticket/${event.id}`, state: { event } }}>
-                    <Button className="mt-2 w-full">Kup bilet</Button>
-                </Link>
+                <Button className="mt-2 w-full" onClick={() => {
+                  setSelectedEvent(event); // zapisz wybrany event
+                  setOpen(true);           // otwórz modal
+                }}>
+                  Kup bilet
+                </Button>
               </CardContent>
             </Card>
           ))}
         </div>
       )}
+
+<CustomDialog open={open} onClose={() => setOpen(false)} selectedEvent={selectedEvent} />
+
+      {/* Jeden modal dla wszystkich eventów */}
+      {/*<Modal open={open} onClose={() => setOpen(false)}>
+        <div className="text-black">
+          <h2 className="text-xl font-bold mb-4">Kup bilet</h2>
+          {selectedEvent && (
+            <>
+              <p className="mb-2">{selectedEvent.title}</p>
+              <p className="mb-4 text-sm text-gray-700">{selectedEvent.city}, {selectedEvent.venue}</p>
+              <Button onClick={() => alert("Dodano do koszyka!")}>Dodaj do koszyka</Button>
+            </>
+          )}
+        </div>
+      </Modal>*/}
     </div>
   );
 }
