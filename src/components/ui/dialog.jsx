@@ -3,6 +3,7 @@ import { Dialog, DialogContent, IconButton, Button, Box, Typography } from '@mui
 import CloseIcon from '@mui/icons-material/Close';
 
 export default function CustomDialog({ open, onClose, selectedEvent }) {
+
   return (
     <Dialog open={open} onClose={onClose} sx={{ zIndex: 9999 }} >
       <DialogContent
@@ -48,7 +49,7 @@ export default function CustomDialog({ open, onClose, selectedEvent }) {
               <Typography variant="body2" sx={{ mb: 4, color: 'gray' }}>
                 {selectedEvent.city}, {selectedEvent.venue}
               </Typography>
-              <Button onClick={() => alert('Dodano do koszyka!')} variant="contained" color="primary">
+              <Button onClick={addToCart} variant="contained" color="primary">
                 Dodaj do koszyka
               </Button>
             </>

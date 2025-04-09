@@ -12,7 +12,7 @@ export default function EventsPage() {
   const [selectedGenre, setSelectedGenre] = useState("Wszystkie");
   const [search, setSearch] = useState("");
   const [open, setOpen] = useState(false);
-  const [selectedEvent, setSelectedEvent] = useState(null); // 👈 nowy stan
+  const [selectedEvent, setSelectedEvent] = useState(null);
 
   useEffect(() => {
     const fetchEvents = async () => {
@@ -20,7 +20,6 @@ export default function EventsPage() {
       const eventsData = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
       setEvents(eventsData);
     };
-
     fetchEvents();
   }, []);
 
@@ -33,6 +32,11 @@ export default function EventsPage() {
     const matchSearch = event.title.toLowerCase().includes(search.toLowerCase());
     return matchCity && matchGenre && matchSearch;
   });
+
+  const openMap = (event) => {
+    const query = encodeURIComponent(`${event.venue}, ${event.city}`);
+    window.open(`https://www.google.com/maps/search/?api=1&query=${query}`, '_blank');
+  };
 
   return (
     <div className="p-4">
@@ -73,33 +77,24 @@ export default function EventsPage() {
                 <p className="text-sm text-gray-600">{event.city}, {event.venue}</p>
                 <p className="text-sm">🎵 {event.genre}</p>
                 <p className="text-sm">📅 {event.date}</p>
-                <Button className="mt-2 w-full" onClick={() => {
-                  setSelectedEvent(event); // zapisz wybrany event
-                  setOpen(true);           // otwórz modal
-                }}>
-                  Kup bilet
-                </Button>
+                <div className="flex gap-2 mt-2">
+                  <Button className="w-full" onClick={() => {
+                    setSelectedEvent(event);
+                    setOpen(true);
+                  }}>
+                    Zobacz szczegóły
+                  </Button>
+                  <Button className="w-full bg-green-600" onClick={() => openMap(event)}>
+                    GPS
+                  </Button>
+                </div>
               </CardContent>
             </Card>
           ))}
         </div>
       )}
 
-<CustomDialog open={open} onClose={() => setOpen(false)} selectedEvent={selectedEvent} />
-
-      {/* Jeden modal dla wszystkich eventów */}
-      {/*<Modal open={open} onClose={() => setOpen(false)}>
-        <div className="text-black">
-          <h2 className="text-xl font-bold mb-4">Kup bilet</h2>
-          {selectedEvent && (
-            <>
-              <p className="mb-2">{selectedEvent.title}</p>
-              <p className="mb-4 text-sm text-gray-700">{selectedEvent.city}, {selectedEvent.venue}</p>
-              <Button onClick={() => alert("Dodano do koszyka!")}>Dodaj do koszyka</Button>
-            </>
-          )}
-        </div>
-      </Modal>*/}
+      <CustomDialog open={open} onClose={() => setOpen(false)} selectedEvent={selectedEvent} />
     </div>
   );
 }
