@@ -3,7 +3,27 @@ import { Dialog, DialogContent, IconButton, Button, Box, Typography } from '@mui
 import CloseIcon from '@mui/icons-material/Close';
 
 export default function CustomDialog({ open, onClose, selectedEvent }) {
+  const addToCart = () => {
+    if (selectedEvent) {
+      const cart = JSON.parse(localStorage.getItem("cart")) || [];
+      console.log("Stan koszyka przed dodaniem:", cart);
 
+      const alreadyInCart = cart.some(e => e.id === selectedEvent.id);
+
+      if (!alreadyInCart) {
+        cart.push(selectedEvent);
+        localStorage.setItem("cart", JSON.stringify(cart));
+        console.log("Dodano do koszyka:", selectedEvent.title);
+        console.log("Stan koszyka po dodaniu:", cart);
+        console.log("Stan koszyka w localStorage po zapisaniu:", JSON.parse(localStorage.getItem("cart")));
+      } else {
+        console.log("Wydarzenie już w koszyku");
+      }
+      
+      onClose();
+    }
+  };
+  
   return (
     <Dialog open={open} onClose={onClose} sx={{ zIndex: 9999 }} >
       <DialogContent
@@ -49,7 +69,7 @@ export default function CustomDialog({ open, onClose, selectedEvent }) {
               <Typography variant="body2" sx={{ mb: 4, color: 'gray' }}>
                 {selectedEvent.city}, {selectedEvent.venue}
               </Typography>
-              <Button onClick={addToCart} variant="contained" color="primary">
+              <Button  onClick={addToCart} variant="contained" color="primary">
                 Dodaj do koszyka
               </Button>
             </>

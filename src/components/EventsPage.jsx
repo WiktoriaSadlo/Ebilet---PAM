@@ -79,10 +79,11 @@ export default function EventsPage() {
                 <p className="text-sm">📅 {event.date}</p>
                 <div className="flex gap-2 mt-2">
                   <Button className="w-full" onClick={() => {
+                    console.log("Kliknięto kup bilet:", event.title);
                     setSelectedEvent(event);
                     setOpen(true);
                   }}>
-                    Zobacz szczegóły
+                    Kup bilet
                   </Button>
                   <Button className="w-full bg-green-600" onClick={() => openMap(event)}>
                     GPS
