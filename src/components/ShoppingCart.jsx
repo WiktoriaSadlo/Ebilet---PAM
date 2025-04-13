@@ -40,6 +40,8 @@ export default function ShoppingCart() {
 
   const handlePayment = () => {
     const total = cartItems.reduce((sum, item) => sum + Number(item.price || 0), 0);
+    const audio = new Audio("/sounds/mixkit-select-click-1109.wav");
+    audio.play();
     navigate("/payu", { state: { total } });
   };
 
