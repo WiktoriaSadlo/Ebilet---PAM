@@ -8,9 +8,11 @@ import Login from "./components/Login";
 import Register from "./components/Register";
 import Home from "./components/Home"; 
 import EventsPage from "./components/EventsPage";
-import CartPage from './components/CartPage';
+// import CartPage from './components/CartPage';
 import Navbar from './components/Navbar';
 import ShoppingCart from './components/ShoppingCart';
+import Confirmation from './components/payU/Confirmation';
+import PayUSimulator from './components/payU/PayUSimulator';
 
 function App() {
   const [user, setUser] = useState(null);
@@ -38,6 +40,8 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/cart" element={<ShoppingCart/>}/>
+          <Route path="/payu" element={<PayUSimulator/>}/>
+          <Route path="/confirmation" element={<Confirmation />} />
         </Routes>
       </div>
       </div>
