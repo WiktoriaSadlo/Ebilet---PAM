@@ -12,6 +12,7 @@ import Navbar from './components/Navbar';
 import ShoppingCart from './components/ShoppingCart';
 import Confirmation from './components/payU/Confirmation';
 import PayUSimulator from './components/payU/PayUSimulator';
+import QRScanner from './components/QRScanner';
 
 function App() {
   const [user, setUser] = useState(null);
@@ -40,6 +41,7 @@ function App() {
           <Route path="/cart" element={<ShoppingCart/>}/>
           <Route path="/payu" element={<PayUSimulator/>}/>
           <Route path="/confirmation" element={<Confirmation />} />
+          <Route path="/scanner" element={<QRScanner />} />
         </Routes>
       </div>
       </div>

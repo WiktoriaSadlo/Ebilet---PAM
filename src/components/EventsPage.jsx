@@ -6,6 +6,7 @@ import Card, { CardContent } from "./ui/card";
 import Input from "./ui/input";
 import Button from "./ui/button";
 import CustomDialog from "./ui/dialog";
+import QRScanner from "./QRScanner";
 
 export default function EventsPage() {
   const [events, setEvents] = useState([]);
@@ -14,6 +15,7 @@ export default function EventsPage() {
   const [search, setSearch] = useState("");
   const [open, setOpen] = useState(false);
   const [selectedEvent, setSelectedEvent] = useState(null);
+  const [showScanner, setShowScanner] = useState(false);
 
   useEffect(() => {
     const fetchEvents = async () => {
@@ -97,6 +99,18 @@ export default function EventsPage() {
       )}
 
       <CustomDialog open={open} onClose={() => setOpen(false)} selectedEvent={selectedEvent} />
+
+      {/*Przycisk dla skanera*/}
+      <div className="mt-8">
+        <button
+          onClick={() => setShowScanner(prev => !prev)}
+          className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-xl shadow-md mb-4"
+        >
+          {showScanner ? '❌ Zamknij skaner' : '📷 Otwórz skaner QR'}
+        </button>
+
+        {showScanner && <QRScanner />}
+      </div>
     </div>
   );
 }
