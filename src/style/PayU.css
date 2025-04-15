@@ -1,0 +1,68 @@
+/* PayU.css */
+
+.payu-container {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 2rem;
+    text-align: center;
+    font-family: "Arial", sans-serif;
+  }
+  
+  .payu-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #1a202c;
+    margin-bottom: 1.5rem;
+  }
+  
+  .payu-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+  
+  .payu-field {
+    text-align: left;
+  }
+  
+  .payu-field label {
+    display: block;
+    font-size: 0.9rem;
+    margin-bottom: 0.3rem;
+    color: #4a5568;
+  }
+  
+  .payu-field input {
+    width: 100%;
+    padding: 0.6rem;
+    border: 1px solid #cbd5e0;
+    border-radius: 0.5rem;
+    background-color: #edf2f7;
+    color: #2d3748;
+  }
+  
+  .payu-button {
+    padding: 0.8rem;
+    background-color: #3182ce;
+    color: white;
+    border: none;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    cursor: not-allowed;
+  }
+  
+  .fade-in {
+    animation: fadeIn 0.8s ease-in-out forwards;
+  }
+  
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
