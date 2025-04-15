@@ -8,7 +8,6 @@ import Login from "./components/Login";
 import Register from "./components/Register";
 import Home from "./components/Home"; 
 import EventsPage from "./components/EventsPage";
-import CartPage from './components/CartPage';
 import Navbar from './components/Navbar';
 import ShoppingCart from './components/ShoppingCart';
 
@@ -33,7 +32,6 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/events" element={<EventsPage />} />
-          
           <Route path="/tickets" element={user ? <div>Twoje bilety</div> : <Navigate to="/login" />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
