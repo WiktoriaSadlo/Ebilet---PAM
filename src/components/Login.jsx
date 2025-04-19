@@ -1,6 +1,6 @@
 // src/Login.jsx
 import { useState } from "react";
-import { signInWithEmailAndPassword } from "firebase/auth";
+import { getAuth, signInWithPopup, signInWithEmailAndPassword, GoogleAuthProvider } from "firebase/auth";
 import { auth } from "../firebase";  // Zaimportuj auth
 
 function Login() {
@@ -14,6 +14,19 @@ function Login() {
       await signInWithEmailAndPassword(auth, email, password);
     } catch (err) {
       setError(err.message);
+    }
+  };
+
+  const signInWithGoogle = async () => {
+    const auth = getAuth();
+    const provider = new GoogleAuthProvider();
+  
+    try {
+      const result = await signInWithPopup(auth, provider);
+      const user = result.user;
+      console.log("Zalogowano jako:", user.displayName);
+    } catch (error) {
+      console.error("Błąd logowania przez Google:", error);
     }
   };
 
@@ -34,6 +47,7 @@ function Login() {
           placeholder="Password"
         />
         <button type="submit">Zaloguj</button>
+        <button onClick={signInWithGoogle}>Zaloguj się przez Google</button>
       </form>
       {error && <p>{error}</p>}
     </div>

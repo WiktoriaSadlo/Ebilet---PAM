@@ -9,6 +9,7 @@ import CustomDialog from "./ui/dialog";
 
 export default function EventsPage() {
   const [events, setEvents] = useState([]);
+  const [venues, setVenues] = useState({});
   const [selectedCity, setSelectedCity] = useState("Wszystkie");
   const [selectedGenre, setSelectedGenre] = useState("Wszystkie");
   const [search, setSearch] = useState("");
@@ -16,26 +17,36 @@ export default function EventsPage() {
   const [selectedEvent, setSelectedEvent] = useState(null);
 
   useEffect(() => {
-    const fetchEvents = async () => {
+    const fetchData = async () => {
       const querySnapshot = await getDocs(collection(db, "events"));
       const eventsData = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+      const venueSnap = await getDocs(collection(db, "venues"));
+      const venueMap = {};
+      venueSnap.docs.forEach(doc => {
+        venueMap[doc.id] = { id: doc.id, ...doc.data() };
+      });
+
+      setVenues(venueMap);
       setEvents(eventsData);
     };
-    fetchEvents();
+
+    fetchData();
   }, []);
 
   const uniqueGenres = ["Wszystkie", ...new Set(events.map(e => e.genre))];
-  const uniqueCities = ["Wszystkie", ...new Set(events.map(e => e.city))];
+  const uniqueCities = ["Wszystkie", ...new Set(Object.values(venues).map(v => v.city))];
 
   const filteredEvents = events.filter(event => {
-    const matchCity = selectedCity === "Wszystkie" || event.city === selectedCity;
+    const venue = venues[event.venueId];
+    const matchCity = selectedCity === "Wszystkie" || venue?.city === selectedCity;
     const matchGenre = selectedGenre === "Wszystkie" || event.genre === selectedGenre;
     const matchSearch = event.title.toLowerCase().includes(search.toLowerCase());
     return matchCity && matchGenre && matchSearch;
   });
 
   const openMap = (event) => {
-    const query = encodeURIComponent(`${event.venue}, ${event.city}`);
+    const venue = venues[event.venueId];
+    const query = encodeURIComponent(`${venue?.name}, ${venue?.city}`);
     window.open(`https://www.google.com/maps/search/?api=1&query=${query}`, '_blank');
   };
 
@@ -71,28 +82,32 @@ export default function EventsPage() {
         <p>Brak wydarzeń spełniających kryteria.</p>
       ) : (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-          {filteredEvents.map(event => (
-            <Card key={event.id}>
-              <CardContent className="p-4">
-                <h2 className="text-lg font-semibold">{event.title}</h2>
-                <p className="text-sm text-gray-600">{event.city}, {event.venue}</p>
-                <p className="text-sm">🎵 {event.genre}</p>
-                <p className="text-sm">📅 {event.date}</p>
-                <div className="flex gap-2 mt-2">
-                  <Button className="w-full" onClick={() => {
-                    console.log("Kliknięto kup bilet:", event.title);
-                    setSelectedEvent(event);
-                    setOpen(true);
-                  }}>
-                    Kup bilet
-                  </Button>
-                  <Button className="w-full bg-green-600" onClick={() => openMap(event)}>
-                    GPS
-                  </Button>
-                </div>
-              </CardContent>
-            </Card>
-          ))}
+          {filteredEvents.map(event => {
+  const venue = venues[event.venueId];
+
+  return (
+    <Card key={event.id}>
+      <CardContent className="p-4">
+        <h2 className="text-lg font-semibold">{event.title}</h2>
+        <p className="text-sm text-gray-600">{venue?.city || "Nieznane"}, {venue?.name || "Brak miejsca"}</p>
+        <p className="text-sm">🎵 {event.genre}</p>
+        <p className="text-sm">📅 {event.date}</p>
+        <p className="text-sm">💵{event.price} PLN</p>
+        <div className="flex gap-2 mt-2">
+          <Button className="w-full" onClick={() => {
+            setSelectedEvent(event);
+            setOpen(true);
+          }}>
+            Kup bilet
+          </Button>
+          <Button className="w-full bg-green-600" onClick={() => openMap(event)}>
+            GPS
+          </Button>
+        </div>
+      </CardContent>
+    </Card>
+  );
+})}
         </div>
       )}
 
