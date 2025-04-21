@@ -16,6 +16,7 @@
     "@mui/material": "^7.0.1",
     "ebilet-mobile": "file:",
     "firebase": "^11.6.0",
+    "html5-qrcode": "^2.3.8",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-feather": "^2.0.10",
