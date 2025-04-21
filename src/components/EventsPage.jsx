@@ -114,18 +114,6 @@ export default function EventsPage() {
       )}
 
       <CustomDialog open={open} onClose={() => setOpen(false)} selectedEvent={selectedEvent} />
-
-      {/*Przycisk dla skanera*/}
-      <div className="mt-8">
-        <button
-          onClick={() => setShowScanner(prev => !prev)}
-          className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-xl shadow-md mb-4"
-        >
-          {showScanner ? '❌ Zamknij skaner' : '📷 Otwórz skaner QR'}
-        </button>
-
-        {showScanner && <QRScanner />}
-      </div>
     </div>
   );
 }
