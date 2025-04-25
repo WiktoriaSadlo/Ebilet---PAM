@@ -24,7 +24,6 @@ Projekt jest stworzony przy użyciu biblioteki **React**, z wykorzystaniem **Rea
 - **Przeglądanie wydarzeń**: Użytkownicy mogą przeglądać dostępne wydarzenia z różnych kategorii.
 - **Zakup biletów**: Użytkownicy mogą wybierać liczbę biletów, dodawać je do koszyka i finalizować zakup.
 - **Zarządzanie koszykiem**: Możliwość dodania biletu do koszyka oraz jego edytowania.
-- **Mapy dostępnych miejsc**: Dla niektórych wydarzeń (np. Tauron Arena Kraków, PGE Narodowe) wyświetlana jest mapa dostępnych miejsc.
   
 ## Technologie
 
