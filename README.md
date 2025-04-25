@@ -34,6 +34,5 @@ Projekt jest stworzony przy użyciu biblioteki **React**, z wykorzystaniem **Rea
 
 ## Marvel App
 
-https://marvelapp.com/prototype/117j7447/screen/97113474
-  
+https://marvelapp.com/prototype/117j7447/screen/97115923
 
