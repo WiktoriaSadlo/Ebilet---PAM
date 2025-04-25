@@ -31,5 +31,9 @@ Projekt jest stworzony przy użyciu biblioteki **React**, z wykorzystaniem **Rea
 - **React Router**: Narzędzie do zarządzania nawigacją w aplikacji.
 - **TailwindCSS**: Narzędzie do stylizacji aplikacji za pomocą utility-first CSS.
 - **React Context**: Używane do zarządzania stanem użytkownika (np. dane logowania, koszyk).
+
+## Marvel App
+
+https://marvelapp.com/prototype/117j7447/screen/97113474
   
 
